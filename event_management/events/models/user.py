@@ -24,14 +24,14 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS: List[str] = []
 
-    def has_perm(self, perm, obj=None):
+    def has_perm(self, perm, obj=None):  # pylint: disable=R0201,W0613
         return True
 
-    def has_module_perms(self, app_label):
+    def has_module_perms(self, app_label):  # pylint: disable=R0201,W0613
         return True
 
-    def is_staff(self):
+    def is_staff(self):  # pylint: disable=R0201
         return True
 
-    def is_active(self):
+    def is_active(self):  # pylint: disable=R0201
         return True
