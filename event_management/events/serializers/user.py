@@ -8,7 +8,7 @@ from event_management.events.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:  # pylint: disable=R0903
         model = User
-        fields = ["email"]
+        fields = ["email", "password"]
 
     def validate_password(self, value):  # pylint: disable=R0201
         password_validation.validate_password(value)
