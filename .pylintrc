@@ -6,3 +6,5 @@ disable=
     C0115,
     C0116,
     C0301 # flake8
+load-plugins=pylint_django
+django-settings-module=event_management.settings

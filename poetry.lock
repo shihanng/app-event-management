@@ -146,7 +146,7 @@ doc = ["sphinx", "sphinx-rtd-theme", "sphinxcontrib-spelling"]
 
 [[package]]
 name = "faker"
-version = "5.3.0"
+version = "5.0.1"
 description = "Faker is a Python package that generates fake data for you."
 category = "dev"
 optional = false
@@ -316,6 +316,34 @@ mccabe = ">=0.6,<0.7"
 toml = ">=0.7.1"
 
 [[package]]
+name = "pylint-django"
+version = "2.4.0"
+description = "A Pylint plugin to help Pylint understand the Django web framework"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Faker = "5.0.1"
+pylint = ">=2.0"
+pylint-plugin-utils = ">=0.5"
+
+[package.extras]
+for_tests = ["coverage", "django-tables2", "factory-boy", "pytest"]
+with_django = ["django"]
+
+[[package]]
+name = "pylint-plugin-utils"
+version = "0.6"
+description = "Utilities and helpers for writing Pylint plugins"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pylint = ">=1.7"
+
+[[package]]
 name = "pyparsing"
 version = "2.4.7"
 description = "Python parsing module"
@@ -458,7 +486,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "962dd198cb9face4354d1327763ad0ec04c028ffed42f194b0c543917ea5db8e"
+content-hash = "ce12542fd80b0d4514fc02fd197a27fd83d888c09b83d73d985fb2b9edbcfa0d"
 
 [metadata.files]
 appdirs = [
@@ -555,8 +583,8 @@ factory-boy = [
     {file = "factory_boy-3.2.0.tar.gz", hash = "sha256:401cc00ff339a022f84d64a4339503d1689e8263a4478d876e58a3295b155c5b"},
 ]
 faker = [
-    {file = "Faker-5.3.0-py3-none-any.whl", hash = "sha256:7e98483fc273ec5cfe1c9efa9b99adaa2de4c6b610fbc62d3767088e4974b0ce"},
-    {file = "Faker-5.3.0.tar.gz", hash = "sha256:7b0c4bb678be21a68640007f254259c73d18f7996a3448267716423360519732"},
+    {file = "Faker-5.0.1-py3-none-any.whl", hash = "sha256:1fcb415562ee6e2395b041e85fa6901d4708d30b84d54015226fa754ed0822c3"},
+    {file = "Faker-5.0.1.tar.gz", hash = "sha256:e8beccb398ee9b8cc1a91d9295121d66512b6753b4846eb1e7370545d46b3311"},
 ]
 flake8 = [
     {file = "flake8-3.8.4-py2.py3-none-any.whl", hash = "sha256:749dbbd6bfd0cf1318af27bf97a14e28e5ff548ef8e5b1566ccfb25a11e7c839"},
@@ -648,6 +676,14 @@ pyflakes = [
 pylint = [
     {file = "pylint-2.6.0-py3-none-any.whl", hash = "sha256:bfe68f020f8a0fece830a22dd4d5dddb4ecc6137db04face4c3420a46a52239f"},
     {file = "pylint-2.6.0.tar.gz", hash = "sha256:bb4a908c9dadbc3aac18860550e870f58e1a02c9f2c204fdf5693d73be061210"},
+]
+pylint-django = [
+    {file = "pylint-django-2.4.0.tar.gz", hash = "sha256:9c324bf1734b0bae7693fa92ee6f486f35665a3519e5344bce0aa5f5743bd6f2"},
+    {file = "pylint_django-2.4.0-py3-none-any.whl", hash = "sha256:8dc2901d290b9b913eafc701659136b409cddb9b0f5310c219ecf15bd0a86e7b"},
+]
+pylint-plugin-utils = [
+    {file = "pylint-plugin-utils-0.6.tar.gz", hash = "sha256:57625dcca20140f43731311cd8fd879318bf45a8b0fd17020717a8781714a25a"},
+    {file = "pylint_plugin_utils-0.6-py3-none-any.whl", hash = "sha256:2f30510e1c46edf268d3a195b2849bd98a1b9433229bb2ba63b8d776e1fc4d0a"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
