@@ -1,6 +1,7 @@
 from typing import List
 
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 
 
@@ -13,25 +14,18 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password, **extra_fields):
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(
+            email, password, is_superuser=True, is_staff=True, **extra_fields
+        )
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
+    is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS: List[str] = []
 
-    def has_perms(self, perm, obj=None):  # pylint: disable=R0201,W0613
-        return True
-
-    def has_module_perms(self, app_label):  # pylint: disable=R0201,W0613
-        return True
-
-    def is_staff(self):  # pylint: disable=R0201
-        return True
-
-    def is_active(self):  # pylint: disable=R0201
-        return True
+    is_active = True
