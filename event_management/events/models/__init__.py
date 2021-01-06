@@ -1,1 +1,3 @@
-from .user import User  # noqa: F401
+# flake8: noqa: F401
+from .event import Event
+from .user import User

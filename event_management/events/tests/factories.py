@@ -33,3 +33,14 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = get_user_model()
         django_get_or_create = ["email"]
+
+
+class EventFactory(DjangoModelFactory):
+    name = Faker("catch_phrase")
+    location = Faker("city")
+    uuid = Faker("uuid4")
+    start_time = Faker("date_time_this_year")
+    end_time = Faker("date_time_this_year")
+
+    class Meta:
+        model = "events.Event"

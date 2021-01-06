@@ -18,9 +18,10 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from event_management.events.views import UserViewSet
+from event_management.events.views import EventViewSet, UserViewSet
 
 router = routers.DefaultRouter()
+router.register(r"events", EventViewSet)
 router.register(r"users", UserViewSet)
 
 
