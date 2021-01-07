@@ -11,6 +11,7 @@ poetry install
 Run development server:
 
 ```console
+export SECRET_KEY="secret_key"
 make dev
 ```
 

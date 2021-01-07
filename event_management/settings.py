@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False),
+    SECRET_KEY=str,
+)
+
+# reading .env file
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,13 +30,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "gg^2%5p%9)fc$26jpbte8h2hyb!r#$*l%fb=pc_@54m07*h&9)"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
 # Application definition
 
