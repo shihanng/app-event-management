@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.models import Group
 
-from event_management.events.models import Event, User
+from event_management.events.models import Event, EventUser, User
 
 
 @admin.register(User)
@@ -30,5 +30,6 @@ class UserAdmin(AuthUserAdmin):
 
 
 admin.site.register(Event)
+admin.site.register(EventUser)
 
 admin.site.unregister(Group)
