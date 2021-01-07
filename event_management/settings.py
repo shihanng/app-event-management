@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
     "drf_yasg",
+    "djoser",
     "event_management.events.apps.EventsConfig",
 ]
 
@@ -130,7 +132,10 @@ AUTH_USER_MODEL = "events.User"
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-    ]
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+    ),
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
