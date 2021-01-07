@@ -6,8 +6,12 @@ help:
 migrate: ## Run migration
 	poetry run ./manage.py migrate 
 
+.PHONY: add_events
+add_events: migrate ## Run populate development server with events
+	poetry run ./manage.py loaddata events.json
+
 .PHONY: dev
-dev: migrate ## Run development server
+dev: add_events ## Run development server
 	poetry run ./manage.py runserver 5000
 
 .PHONY: test

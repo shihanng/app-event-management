@@ -1,0 +1,79 @@
+[
+  {
+    "model": "events.event",
+    "pk": 1,
+    "fields": {
+      "name": "Pre-emptive methodical Internet solution",
+      "location": "Gonzaleztown",
+      "uuid": "ef7dfbf7-af0c-4b68-aaf5-68fa091e662b",
+      "start_time": "2021-01-02T23:06:42+00:00",
+      "end_time": "2021-01-06T00:52:56+00:00"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 2,
+    "fields": {
+      "name": "Universal object-oriented conglomeration",
+      "location": "East Mitchell",
+      "uuid": "c1913d51-4e69-49f5-a3ae-6e74f2e520e3",
+      "start_time": "2021-01-03T17:53:12+00:00",
+      "end_time": "2021-01-03T18:26:32+00:00"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 3,
+    "fields": {
+      "name": "Public-key context-sensitive customer loyalty",
+      "location": "Thomasmouth",
+      "uuid": "fab530db-50a4-4ede-8cab-ab1395fc040c",
+      "start_time": "2021-01-02T22:13:04+00:00",
+      "end_time": "2021-01-07T01:45:23+00:00"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 4,
+    "fields": {
+      "name": "Sharable 6thgeneration ability",
+      "location": "Port Christina",
+      "uuid": "6365e047-a365-4005-be02-32be17094633",
+      "start_time": "2021-01-03T21:08:46+00:00",
+      "end_time": "2021-01-04T15:35:42+00:00"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 5,
+    "fields": {
+      "name": "Synchronized tangible projection",
+      "location": "South Katherine",
+      "uuid": "667864ea-9dbe-4b4e-bdd8-000541b2b76a",
+      "start_time": "2021-01-03T17:58:37+00:00",
+      "end_time": "2021-01-05T17:32:54+00:00"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 6,
+    "fields": {
+      "name": "Organized even-keeled archive",
+      "location": "New Elizabethshire",
+      "uuid": "997eb443-53d3-4054-b096-a2add33cfce9",
+      "start_time": "2021-01-05T02:17:07+00:00",
+      "end_time": "2021-01-04T02:56:17+00:00"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": 7,
+    "fields": {
+      "name": "Horizontal bifurcated parallelism",
+      "location": "Kingside",
+      "uuid": "a495abaa-93e6-4b5d-adf0-37029e9d95ce",
+      "start_time": "2021-01-02T13:33:58+00:00",
+      "end_time": "2021-01-06T18:22:40+00:00"
+    }
+  }
+]
