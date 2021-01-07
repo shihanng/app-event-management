@@ -20,7 +20,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(unique=True, editable=False)
+    email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
