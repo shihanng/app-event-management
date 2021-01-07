@@ -37,3 +37,9 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
 
         event.user.remove(request.user)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(detail=False, methods=["get"])
+    def me(self, request, *args, **kwargs):
+        queryset = self.queryset.filter(user=request.user)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)

@@ -33,7 +33,13 @@ class EventTest(APITestCase):
 
         response = self.client.put(f"/events/{event.uuid}/register/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        EventUser.objects.get(user__email=self.user.email, event__uuid=event.uuid)
+
+        response = self.client.get(r"/events/me/")
+        self.assertContains(
+            response,
+            event.uuid,
+            status_code=status.HTTP_200_OK,
+        )
 
         response = self.client.put(f"/events/{event.uuid}/register/")
         self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
