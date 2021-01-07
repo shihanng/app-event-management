@@ -21,17 +21,19 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
     @action(detail=True, methods=["put"])
     def register(self, request, *args, **kwargs):
         event = self.get_object()
+
+        if event.user.filter(email=request.user.email).exists():
+            return Response(status=status.HTTP_409_CONFLICT)
+
         event.user.add(request.user)
-
-        # TODO(shihanng): Check if already registered
-
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(detail=True, methods=["put"])
     def deregister(self, request, *args, **kwargs):
         event = self.get_object()
+
+        if not event.user.filter(email=request.user.email).exists():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
         event.user.remove(request.user)
-
-        # TODO(shihanng): Check if already deregistered
-
         return Response(status=status.HTTP_204_NO_CONTENT)

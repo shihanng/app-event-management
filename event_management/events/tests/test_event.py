@@ -35,8 +35,14 @@ class EventTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         EventUser.objects.get(user__email=self.user.email, event__uuid=event.uuid)
 
+        response = self.client.put(f"/events/{event.uuid}/register/")
+        self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
+
         response = self.client.put(f"/events/{event.uuid}/deregister/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         with self.assertRaises(EventUser.DoesNotExist):
             EventUser.objects.get(user__email=self.user.email, event__uuid=event.uuid)
+
+        response = self.client.put(f"/events/{event.uuid}/deregister/")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
