@@ -12,6 +12,8 @@ from rest_framework.viewsets import ModelViewSet
 from event_management.events.models import Event
 from event_management.events.serializers import EmptySerializer, EventSerializer
 
+from drf_yasg.utils import swagger_auto_schema
+
 logger = logging.getLogger(__name__)
 
 
@@ -25,6 +27,9 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
             return EmptySerializer
         return EventSerializer
 
+    @swagger_auto_schema(
+        operation_description="Signup current logged in user to the event"
+    )
     @action(detail=True, methods=["put"])
     def register(self, request, *args, **kwargs):
         event = self.get_object()
@@ -47,6 +52,9 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    @swagger_auto_schema(
+        operation_description="Remove current logged in user from the event"
+    )
     @action(detail=True, methods=["put"])
     def deregister(self, request, *args, **kwargs):
         event = self.get_object()
@@ -57,6 +65,9 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
         event.user.remove(request.user)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    @swagger_auto_schema(
+        operation_description="List all events of current logged in user"
+    )
     @action(detail=False, methods=["get"])
     def me(self, request, *args, **kwargs):
         queryset = self.queryset.filter(user=request.user)

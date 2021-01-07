@@ -20,6 +20,8 @@ make dev
 
 `EMAIL_CONFIG` consists of username, password, host name, and port number of the SMTP server for sending notification email. We can omit both `EMAIL_CONFIG` and `NOTIFY_TO` in development. In this case, the app will log a warning instead of sending email.
 
+REST endpoints documentation is available as Swagger API documentation. See: http://localhost:5000/swagger/ after launching the development server.
+
 Run unit tests with:
 
 ```console
