@@ -1,6 +1,7 @@
 from typing import Any, Sequence
 
 from django.contrib.auth import get_user_model
+from django.utils.timezone import utc
 
 from factory import Faker, post_generation
 from factory.django import DjangoModelFactory
@@ -39,8 +40,8 @@ class EventFactory(DjangoModelFactory):
     name = Faker("catch_phrase")
     location = Faker("city")
     uuid = Faker("uuid4")
-    start_time = Faker("date_time_this_year")
-    end_time = Faker("date_time_this_year")
+    start_time = Faker("date_time_this_year", tzinfo=utc)
+    end_time = Faker("date_time_this_year", tzinfo=utc)
 
     class Meta:
         model = "events.Event"
