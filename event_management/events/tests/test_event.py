@@ -1,3 +1,5 @@
+from django.test import override_settings
+
 import factory
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -28,6 +30,7 @@ class EventTest(APITestCase):
         response = self.client.get(f"/events/{uuid}/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    @override_settings(NOTIFY_TO="test@example.com")
     def test_register_deregister_event(self):
         event = EventFactory()
 

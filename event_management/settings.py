@@ -14,13 +14,7 @@ from pathlib import Path
 
 import environ
 
-env = environ.Env(
-    DEBUG=(bool, False),
-    SECRET_KEY=str,
-)
-
-# reading .env file
-environ.Env.read_env()
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+DEBUG = env.bool("DEBUG", False)
 
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
@@ -137,3 +131,12 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ]
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_CONFIG = env.email_url("EMAIL_CONFIG", "smtp://user:password@localhost:25")
+NOTIFY_TO = env.str("NOTIFY_TO", "")
+EMAIL_USE_TLS = True
+EMAIL_HOST = EMAIL_CONFIG["EMAIL_HOST"]
+EMAIL_PORT = EMAIL_CONFIG["EMAIL_PORT"]
+EMAIL_HOST_USER = EMAIL_CONFIG["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = EMAIL_CONFIG["EMAIL_HOST_PASSWORD"]

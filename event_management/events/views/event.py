@@ -1,3 +1,8 @@
+import logging
+
+from django.conf import settings
+from django.core.mail import send_mail
+
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -6,6 +11,8 @@ from rest_framework.viewsets import ModelViewSet
 
 from event_management.events.models import Event
 from event_management.events.serializers import EmptySerializer, EventSerializer
+
+logger = logging.getLogger(__name__)
 
 
 class EventViewSet(ModelViewSet):  # pylint: disable=R0901
@@ -26,6 +33,18 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
             return Response(status=status.HTTP_409_CONFLICT)
 
         event.user.add(request.user)
+
+        if settings.NOTIFY_TO:
+            send_mail(
+                f'New registration for event "{event.name}"',
+                f"{request.user.email} has registered.",
+                settings.EMAIL_HOST_USER,
+                [settings.NOTIFY_TO],
+                fail_silently=False,
+            )
+        else:
+            logger.warn("skip email notification because EMAIL_HOST_USER not set")
+
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(detail=True, methods=["put"])
