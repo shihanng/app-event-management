@@ -27,3 +27,7 @@ Run unit tests with:
 ```console
 make test
 ```
+
+## UI
+
+UI is available in <https://github.com/shihanng/app-event-management-ui>.
