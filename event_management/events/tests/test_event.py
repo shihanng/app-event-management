@@ -1,4 +1,5 @@
 from django.test import override_settings
+from django.utils.timezone import utc
 
 import factory
 from rest_framework import status
@@ -31,6 +32,25 @@ class EventTest(APITestCase):
         uuid = response.data["uuid"]
         response = self.client.get(f"/events/{uuid}/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_create_event_validate(self):
+        data = factory.build(
+            dict,
+            FACTORY_CLASS=EventFactory,
+            uuid=None,
+            start_time=factory.Faker("future_datetime", tzinfo=utc),
+            end_time=factory.Faker("past_datetime", tzinfo=utc),
+        )
+
+        data.update(
+            {
+                "start_time": data["start_time"].isoformat(),
+                "end_time": data["end_time"].isoformat(),
+            }
+        )
+
+        response = self.client.post("/events/", data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     @override_settings(NOTIFY_TO="test@example.com")
     def test_register_deregister_event(self):

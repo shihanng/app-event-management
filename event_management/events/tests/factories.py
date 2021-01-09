@@ -40,8 +40,8 @@ class EventFactory(DjangoModelFactory):
     name = Faker("catch_phrase")
     location = Faker("city")
     uuid = Faker("uuid4")
-    start_time = Faker("date_time_this_year", tzinfo=utc)
-    end_time = Faker("date_time_this_year", tzinfo=utc)
+    start_time = Faker("past_datetime", tzinfo=utc)
+    end_time = Faker("future_datetime", tzinfo=utc)
 
     class Meta:
         model = "events.Event"

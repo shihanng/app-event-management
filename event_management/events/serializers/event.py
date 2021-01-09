@@ -11,6 +11,11 @@ class EventSerializer(serializers.ModelSerializer):
         fields = ["name", "location", "uuid", "start_time", "end_time"]
         read_only_fields = ["uuid"]
 
+    def validate(self, data):
+        if data["start_time"] > data["end_time"]:
+            raise serializers.ValidationError("start_time must come before end_time")
+        return data
+
 
 class EmptySerializer(serializers.ModelSerializer):
     class Meta:
