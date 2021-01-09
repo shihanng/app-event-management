@@ -19,7 +19,7 @@ class UserTest(APITestCase):
     def test_create_new_user(self):
         data = factory.build(UserDict, FACTORY_CLASS=UserFactory)
 
-        response = self.client.post("/users/", data, format="json")
+        response = self.client.post("/auth/users/", data, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         created_user = User.objects.get(email=data["email"])

@@ -2,6 +2,7 @@ from django.test import override_settings
 
 import factory
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
 from event_management.events.models import EventUser
@@ -11,7 +12,8 @@ from event_management.events.tests.factories import EventFactory, UserFactory
 class EventTest(APITestCase):
     def setUp(self):
         self.user = UserFactory()
-        self.client.force_login(user=self.user)
+        token = Token.objects.create(user=self.user)
+        self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
 
     def test_create_event(self):
         data = factory.build(dict, FACTORY_CLASS=EventFactory, uuid=None)
