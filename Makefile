@@ -23,3 +23,6 @@ test: ## Run unit-tests
 .PHONY: format
 format:
 	$(run) black . --check 
+
+.PHONY: lint
+lint: format

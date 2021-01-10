@@ -8,3 +8,9 @@ disable=
     C0301 # flake8
 load-plugins=pylint_django
 django-settings-module=event_management.settings
+
+[MESSAGES CONTROL]
+disable = C0330, C0326
+
+[format]
+max-line-length = 88
