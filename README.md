@@ -1,6 +1,6 @@
 # app-event-management
 
-[https://github.com/shihanng/app-event-management/actions?query=workflow%3A%22Run+test%22](![Run test](https://github.com/shihanng/app-event-management/workflows/Run%20test/badge.svg))
+[![Run test](https://github.com/shihanng/app-event-management/workflows/Run%20test/badge.svg)](https://github.com/shihanng/app-event-management/actions?query=workflow%3A%22Run+test%22)
 
 ## Local development environment
 
