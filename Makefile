@@ -19,3 +19,7 @@ dev: add_events ## Run development server
 .PHONY: test
 test: ## Run unit-tests
 	$(run) pytest
+
+.PHONY: format
+format:
+	$(run) black . --check 
