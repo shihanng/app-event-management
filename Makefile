@@ -36,5 +36,9 @@ pylint:
 format:
 	$(run) black . --check 
 
+.PHONY: mypy
+mypy:
+	$(run) mypy ./
+
 .PHONY: lint ## Run all linters
-lint: isort format flake8 pylint
+lint: isort format flake8 pylint mypy
