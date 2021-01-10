@@ -25,7 +25,7 @@ from event_management.events.views import EventViewSet
 router = routers.DefaultRouter()
 router.register(r"events", EventViewSet)
 
-schema_view = get_schema_view(
+SchemaView = get_schema_view(
     openapi.Info(
         title="Event Management App API",
         default_version="v1",
@@ -41,12 +41,12 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
-        schema_view.without_ui(cache_timeout=0),
+        SchemaView.without_ui(cache_timeout=0),
         name="schema-json",
     ),
     re_path(
         r"^swagger/$",
-        schema_view.with_ui("swagger", cache_timeout=0),
+        SchemaView.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
     re_path(r"^auth/", include("djoser.urls")),
