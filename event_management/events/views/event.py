@@ -30,7 +30,7 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
         operation_description="Signup current logged in user to the event"
     )
     @action(detail=True, methods=["put"])
-    def register(self, request):
+    def register(self, request, *args, **kwargs):  # pylint: disable=W0613
         event = self.get_object()
 
         if event.user.filter(email=request.user.email).exists():
@@ -55,7 +55,7 @@ class EventViewSet(ModelViewSet):  # pylint: disable=R0901
         operation_description="Remove current logged in user from the event"
     )
     @action(detail=True, methods=["put"])
-    def deregister(self, request):
+    def deregister(self, request, *args, **kwargs):  # pylint: disable=W0613
         event = self.get_object()
 
         if not event.user.filter(email=request.user.email).exists():
