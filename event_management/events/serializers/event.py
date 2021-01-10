@@ -6,15 +6,15 @@ from event_management.events.models import Event
 
 
 class EventSerializer(serializers.ModelSerializer):
-    class Meta:  # pylint: disable=R0903
+    class Meta:
         model = Event
         fields = ["name", "location", "uuid", "start_time", "end_time"]
         read_only_fields = ["uuid"]
 
-    def validate(self, data):
-        if data["start_time"] > data["end_time"]:
+    def validate(self, attrs):
+        if attrs["start_time"] > attrs["end_time"]:
             raise serializers.ValidationError("start_time must come before end_time")
-        return data
+        return attrs
 
 
 class EmptySerializer(serializers.ModelSerializer):

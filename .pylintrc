@@ -1,6 +1,4 @@
 [MASTER]
-
-ignore=migrations
 disable=
     C0114,
     C0115,

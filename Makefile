@@ -28,9 +28,13 @@ flake8:
 isort:
 	$(run) isort . -c
 
+.PHONY: pylint
+pylint:
+	$(run) pylint event_management
+
 .PHONY: format
 format:
 	$(run) black . --check 
 
 .PHONY: lint ## Run all linters
-lint: isort format flake8
+lint: isort format flake8 pylint

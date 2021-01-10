@@ -15,13 +15,11 @@ class UserFactory(DjangoModelFactory):
         self.raw_password = ""
 
     @post_generation
-    def password(
-        self, create: bool, extracted: Sequence[Any], **kwargs
-    ):  # pylint: disable=W0613
+    def password(self, create: bool, extracted: Sequence[Any], **kwargs):
         self.raw_password = (
             extracted
             if extracted
-            else Faker._get_faker().password(  # pylint: disable=W0212
+            else Faker._get_faker().password(
                 length=42,
                 special_chars=True,
                 digits=True,
@@ -29,7 +27,7 @@ class UserFactory(DjangoModelFactory):
                 lower_case=True,
             )
         )
-        self.set_password(self.raw_password)  # pylint: disable=E1101
+        self.set_password(self.raw_password)
 
     class Meta:
         model = get_user_model()
