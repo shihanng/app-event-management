@@ -24,9 +24,13 @@ test: ## Run unit-tests
 flake8:
 	$(run) flake8 --config=setup.cfg 
 
+.PHONY: isort
+isort:
+	$(run) isort . -c
+
 .PHONY: format
 format:
 	$(run) black . --check 
 
-.PHONY: lint
-lint: format flake8
+.PHONY: lint ## Run all linters
+lint: isort format flake8

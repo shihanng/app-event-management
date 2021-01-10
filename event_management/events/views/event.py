@@ -3,6 +3,7 @@ import logging
 from django.conf import settings
 from django.core.mail import send_mail
 
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -11,8 +12,6 @@ from rest_framework.viewsets import ModelViewSet
 
 from event_management.events.models import Event
 from event_management.events.serializers import EmptySerializer, EventSerializer
-
-from drf_yasg.utils import swagger_auto_schema
 
 logger = logging.getLogger(__name__)
 
