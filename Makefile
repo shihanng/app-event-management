@@ -20,9 +20,13 @@ dev: add_events ## Run development server
 test: ## Run unit-tests
 	$(run) pytest
 
+.PHONY: flake8
+flake8:
+	$(run) flake8 --config=setup.cfg 
+
 .PHONY: format
 format:
 	$(run) black . --check 
 
 .PHONY: lint
-lint: format
+lint: format flake8
