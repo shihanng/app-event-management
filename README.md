@@ -1,6 +1,8 @@
 # app-event-management
 
 [![Run test](https://github.com/shihanng/app-event-management/workflows/Run%20test/badge.svg)](https://github.com/shihanng/app-event-management/actions?query=workflow%3A%22Run+test%22)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Local development environment
 
